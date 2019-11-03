@@ -1,6 +1,6 @@
 <?php
 
-namespace CreateTables;
+namespace classes\CreateTables;
 
 /**
  * Создает таблицы для вновь зарегистрированного пользователя
@@ -65,5 +65,38 @@ ACC_50;
     public static function creatCustomAccount($name="")
     {
         if ($name === "") {"error: you must name you account"; }
+    }
+
+    /** Проверяет существует ли таблица
+     * @param string table name
+     * @return bool true if table exist, otherwise false
+     */
+    public static function isTableExist(string $tableName="")
+    {
+        // require_once $_SERVER['DOCUMENT_ROOT'] . '/Config.php';
+        $db = \Config\Config::getDb();
+
+        $result = false;
+
+        // проверка существует ли таблица
+        $query = "SHOW TABLES LIKE '" . $tableName . "'";
+
+        if ($st = $db->prepare($query)) {
+            // $st->bind_param("s", $query);
+            $st->execute();
+            $st->bind_result($fetched_tableName);
+            $st->fetch();
+            $st->close();
+
+        } else {
+            die ("db connect error");
+        }
+
+        if ($tableName === $fetched_tableName) {
+            $result = true;
+        }
+
+        return $result;
+        
     }
 }

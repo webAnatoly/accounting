@@ -1,9 +1,6 @@
 <?php
 
-namespace math;
-
-
-class Complex
+class Math
 {
 
     // Свойства: действительная и мнимая части

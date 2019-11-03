@@ -1,6 +1,6 @@
 <?php
 
-namespace config;
+namespace Config;
 
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
@@ -34,11 +34,17 @@ class Config {
             // $user = "tlk";
             // $pass = "z,kjrj";
             // $db_name = "accounting";
-            // $host = "localhost";
-            $user = "user";
-            $pass = "test";
-            $db_name = "accountingDb";
-            $host = "mysql_my_marlin_project_1:3306";
+            // $host = "localhost:3306";
+
+            $user = "tlk";
+            $pass = "z,kjrj";
+            $db_name = "accounting";
+            $host = "localhost:3306"; // 172.20.0.1 - ip адрес докер контейнера полученный командой docker inspect <container_name> | grep Gateway
+
+            // $user = "user";
+            // $pass = "test";
+            // $db_name = "accountingDb";
+            // $host = "mysql_my_marlin_project_1:3306";
         } else {
             //тут данные удаленного хоста
             $user = "";
