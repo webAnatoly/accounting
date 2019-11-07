@@ -1,6 +1,6 @@
 <?php
 
-namespace classes\CreateTables;
+namespace classes;
 
 /**
  * Создает таблицы для вновь зарегистрированного пользователя
@@ -8,6 +8,12 @@ namespace classes\CreateTables;
 */
 class CreateTables
 {
+
+    public function __construct($a=4)
+    {
+        $this->a = $a;
+    }
+
     public static function create($user_id=0)
     {
         if ($user_id === 0 || !is_int($user_id) ) { return "user id must be number greter zero"; }
